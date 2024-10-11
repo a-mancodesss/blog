@@ -40,12 +40,12 @@ const Links = ({ nav }) => {
       
 
       {/* for smaller screens */} 
-      <button className=" sm:hidden  right-0 bg-black text-white p-1 rounded-md " onClick={()=>setIsOpen(!isOpen) }> 
+      <button className="fixed top-4  z-20 sm:hidden  right-6" onClick={()=>setIsOpen(!isOpen) }> 
          {!isOpen ? <Menu size={24} /> : <X size={24} />}
          </button>
       <div className=" wrapper text-xl">
       {isOpen && 
-              <div className=" absolute -z-10 bg-slate-900 right-0 w-3/5 flex flex-col  gap-8  justify-center items-center h-[calc(100vh-3rem)]">
+              <div className=" fixed bg-slate-900 right-0 top-0 w-3/5 flex flex-col  gap-8  justify-center items-center min-h-[104.44vh]">
                 {nav.map((n) => (
                   <Link
                     className={`${pathname === n.path && "isActive"} `}
