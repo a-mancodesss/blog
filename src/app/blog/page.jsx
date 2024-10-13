@@ -1,10 +1,14 @@
-import React from 'react'
-import { blogPosts } from 'src/seed'
+
+// import { blogPosts } from 'src/seed'
 import PostCard from 'src/components/PostCard/PostCard'
-const BlogPosts = () => {
-  return (<div className='my-4 sm:flex flex-row sm:w-fit sm:flex-wrap justify-center  gap-y-4'>
+import { getPosts } from 'src/database/action'
+const BlogPosts = async() => {
+ const blogPosts = await getPosts();
+
+  return (<div className='my-4 flex flex-col sm:flex-row w-[90%] m-auto sm:w-fit sm:flex-wrap justify-center gap-4 sm:gap-12'>
+ 
     {blogPosts.map((post, index) => ( 
-      <PostCard key={index} title={post.title} author={post.author} description={post.description} imageUrl={post.imageUrl} />
+      <PostCard key={index} id={post.id} title={post.title} author={post.userId} description={post.description} imgUrl={post.imgUrl} slug={post.slug} />
     ))}
     </div>
   )

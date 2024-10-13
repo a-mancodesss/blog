@@ -32,7 +32,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/api/test/route.js", "src/seed.js"  ],
+, "src/app/api/test/route.js", "src/seed.js", "src/database/model.js", "src/database/connect.js", "src/database/action.js"  ],
   "exclude": [
     "node_modules"
   ]

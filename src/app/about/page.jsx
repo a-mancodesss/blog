@@ -9,7 +9,7 @@ export const AboutPage = () => {
 
       </div>
     <div className='imageContainer  '>
-      <Image src='/about.png' height={500} width={500}/>
+      <Image src='/about.png' alt='about' height={500} width={500}/>
     </div>
     </div>
   )
