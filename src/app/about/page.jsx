@@ -1,5 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
+export const metadata = {
+  title: "About Page",
+  description: "About description",
+};
+
 export const AboutPage = () => {
   return (
     <div className="wrapper flex flex-col sm:flex-row sm:items-center sm:justify-around mt-6 gap-10 sm:gap-0 justify-center">

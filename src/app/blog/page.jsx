@@ -1,5 +1,8 @@
+export const metadata = {
+  title: "Blogs Page",
+  description: "Blogs description",
+};
 
-// import { blogPosts } from 'src/seed'
 import PostCard from 'src/components/PostCard/PostCard'
 import { getPosts } from 'src/database/action'
 const BlogPosts = async() => {

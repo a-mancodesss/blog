@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "SingleBlogPage Page",
+  description: "SingleBlogPage description",
+};
 
 import React from 'react'
 import mongoose from 'mongoose'

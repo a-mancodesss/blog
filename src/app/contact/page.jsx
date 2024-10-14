@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+export const metadata = {
+  title: "Contact Page",
+  description: "Contact description",
+};
+
 export const socials = [
   {   id:1,
       image: '/gh.svg',
