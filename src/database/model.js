@@ -1,4 +1,4 @@
-import { model, models, Schema } from "mongoose";
+import { model, models, Schema, Types } from "mongoose";
 
 const userSchema = new Schema({
     name:{
@@ -47,18 +47,16 @@ const postSchema = new Schema({
     },
     imgUrl:{
         type:String,
-        default:""
+        default:"https://dummyimage.com/600x400/000/fff"
     },
     userId:{
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: 'User',
-        required:true,
+        default: 'Aman'
+        // default: new  Types.ObjectId('670c05ff23d6eced860fb0b2')
+        // required:true,
     },
-    slug:{
-        type:String,
-        required:true,
-        unique:true
-    }
+ 
 },{timestamps:true});
 
 export const User = models?.User || model('User',userSchema); 

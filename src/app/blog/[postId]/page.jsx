@@ -3,22 +3,19 @@ export const metadata = {
   description: "SingleBlogPage description",
 };
 
-import React from 'react'
-import mongoose from 'mongoose'
-import {getPost} from 'src/database/action'
-import TestNavigation from 'src/components/navigationTest/test'
+import {getPost} from 'src/database/data'
 export const SinglePostPage = async({params}) => {
 const {postId}= params
 
-// console.log(postId) -> gives 1stPost as postId/slug
-const post = await getPost(postId)  
+
+const post = await getPost(postId, { cache: 'no-store' });  
 
 console.log(post)
   return (
     <div className='singlePostContainer flex min-h-screen gap-4 '>
       <div className="left w-2/5 hidden sm:block py-4  ">
       <div className="left-image-container relative">
-        <img fill className="object-cover" src={post.imgUrl} alt="image" />
+        <img  fill className="object-cover" src={post.imgUrl} alt="image" />
       </div>
       </div>
 
@@ -36,13 +33,12 @@ console.log(post)
           </div>
           <div className="published">
             <div className="published-key font-semibold text-slate-700">Published</div>
-            <div className="published-value">Oct-13th, 2024</div>
+            <div className="published-value">{post.createdAt?.toLocaleString()}</div>
           </div>
         </div>
         <div className="description text-lg sm:text-xl font-extralight text-pretty">
           {post.description}
         </div>
-        <TestNavigation/>
       </div>
       </div>
     </div>
