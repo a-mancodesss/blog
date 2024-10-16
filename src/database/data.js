@@ -4,11 +4,17 @@ import { Post,User } from "./model";
 
 
 export const getPosts = async () => {
-     connectToDb();
-    const posts = await Post.find({});
-    console.log(posts)
-    revalidatePath('/blog')
-    return posts;
+    try{
+        connectToDb();
+        const posts = await Post.find();
+        console.log(posts)
+        revalidatePath('/blog')
+        return posts;
+    }
+    catch(e){
+        console.log('Error in fetching posts',e);
+    }
+  
 }
 export const getPost = async (id) => {
     connectToDb();

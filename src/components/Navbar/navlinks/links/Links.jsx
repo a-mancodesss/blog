@@ -58,7 +58,7 @@ const Links = ({ nav }) => {
                   </Link>
                 ))}
 
-                  {sesssion ? (
+                  {session ? (
                             <>
                               {isAdmin && <Link href="/admin">Admin</Link>}
                               <button>Logout</button>

@@ -15,7 +15,7 @@ export const AboutPage = () => {
    
     <div className="imagecontainer rounded-full relative w-[22rem] h-[22rem] sm:w-[30rem] sm:h-[30rem] mx-auto my-8 border-opacity-20 overflow-visible">
 
-      <Image fill className='bg-cover rounded-full ' src='https://pikaso.cdnpk.net/public/media/tti-examples/31.jpg' alt='about' />
+      <Image fill className='bg-cover rounded-full ' src='https://img.freepik.com/premium-vector/colorful-3d-question-marks_1296140-2398.jpg' alt='about' />
     </div>
     </div>
   )
