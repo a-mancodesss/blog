@@ -15,7 +15,7 @@ console.log(post)
     <div className='singlePostContainer flex min-h-screen gap-4 '>
       <div className="left w-2/5 hidden sm:block py-4  ">
       <div className="left-image-container relative">
-        <img  fill className="object-cover" src={post.imgUrl} alt="image" />
+        <img  fill className="object-cover" src={post.imgUrl || "https://dummyimage.com/600x400/000/fff"} alt="image" />
       </div>
       </div>
 

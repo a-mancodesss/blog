@@ -36,14 +36,10 @@ const postSchema = new Schema({
         type:String,
         required:true,
         unique:true,
-        min:3,
-        max:20
     },
     description:{
         type:String,
         required:true,
-        min:3,
-        max:225
     },
     imgUrl:{
         type:String,
@@ -53,9 +49,8 @@ const postSchema = new Schema({
         type: String,
         ref: 'User',
         default: 'Aman'
-        // default: new  Types.ObjectId('670c05ff23d6eced860fb0b2')
-        // required:true,
-    },
+   
+    }
  
 },{timestamps:true});
 

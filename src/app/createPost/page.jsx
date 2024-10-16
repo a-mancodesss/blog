@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className='border mx-auto border-black  sm:w-1/2 w-5/6 py-20'>
 
-      <form action={addPost} className='form-container'>
+      <form action={addPost} className='form-container' >
 
         <h1 className='text-2xl font-bold'>Create Post</h1>
         <input type="text" name="title" id="title" placeholder='Title' />
