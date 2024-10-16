@@ -1,16 +1,18 @@
 "use client";
+import adminStore from "src/store/adminstore";
 import { Menu, X } from "lucide-react";
 import "./links.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 
 const Links = ({ nav }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  //temporray
-  let sesssion = true;
-  let isAdmin = true;
+//temporray
+
+
+ const {isAdmin,session} = adminStore()
   return (
     <div className="z-10  ">
       {/*for large screens */}
@@ -26,9 +28,9 @@ const Links = ({ nav }) => {
           </Link>
         ))}
 
-        {sesssion ? (
-          <>
-            {isAdmin && <Link href="/admin">Admin</Link>}
+        {session ? (
+          <> 
+            {isAdmin && <Link href="/admin">Admin</Link>} 
             <button>Logout</button>
           </>
         ) : (
