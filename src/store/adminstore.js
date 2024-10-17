@@ -2,8 +2,8 @@
 import { create } from 'zustand';
 
 const adminStore = create((set) => ({
-  isAdmin: true,
-  session: true,
+  isAdmin: false,
+  session: false,
 }));
 
 export default adminStore;

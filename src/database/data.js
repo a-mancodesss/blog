@@ -7,7 +7,6 @@ export const getPosts = async () => {
     try{
         connectToDb();
         const posts = await Post.find();
-        console.log(posts)
         revalidatePath('/blog')
         return posts;
     }
@@ -19,7 +18,6 @@ export const getPosts = async () => {
 export const getPost = async (id) => {
     connectToDb();
     const post = await Post.findById(id);
-    console.log(post)
     revalidatePath('/blog')
 
     return post;

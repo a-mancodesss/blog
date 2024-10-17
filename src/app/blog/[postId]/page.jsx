@@ -18,7 +18,8 @@ const post = await getPost(postId, { cache: 'no-store' });
       <div className="right-box w-full  overflow-scroll ">
       <div className="my-2 sm:m-4 flex flex-col gap-8">
         <div className="title text-2xl sm:text-3xl  font-bold">{post.title}</div>
-        <div className="profile flex gap-6 text-sm justify-between  font-light ">
+
+        <div className="profile flex gap-6 text-sm justify-between sm:justify-normal  font-light ">
           <div className="author">
             <div className="author-key font-semibold text-slate-700">
               Author

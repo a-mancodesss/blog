@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import './createPost.css'
 import { addPost } from 'src/database/action'

@@ -1,4 +1,6 @@
 import React from 'react'
+
+
 export const metadata = {
   title: "Admin Page",
   description: "Admin description",
@@ -6,7 +8,9 @@ export const metadata = {
 
 const AdminPage = () => {
   return (
-    <div>AdminPage</div>
+    <div>
+      AdminPage
+    </div>
   )
 }
 

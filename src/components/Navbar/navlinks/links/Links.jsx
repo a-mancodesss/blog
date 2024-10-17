@@ -1,18 +1,19 @@
 "use client";
-import adminStore from "src/store/adminstore";
+// import adminStore from "src/store/adminstore";
 import { Menu, X } from "lucide-react";
 import "./links.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
+import { handleLogout } from "src/database/action";
 
-const Links = ({ nav }) => {
+const Links = ({ nav,session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-//temporray
 
+const isAdmin = true
+console.log(session)
 
- const {isAdmin,session} = adminStore()
   return (
     <div className="z-10  ">
       {/*for large screens */}
@@ -28,10 +29,13 @@ const Links = ({ nav }) => {
           </Link>
         ))}
 
-        {session ? (
+        {session?.user ? (
           <> 
-            {isAdmin && <Link href="/admin">Admin</Link>} 
+            {session.user?.isAdmin && <Link href="/admin">Admin</Link>} 
+            <form action={handleLogout}>
+
             <button>Logout</button>
+            </form>
           </>
         ) : (
           <Link href="/login">Login</Link>
@@ -58,10 +62,13 @@ const Links = ({ nav }) => {
                   </Link>
                 ))}
 
-                  {session ? (
+                  {session?.user ? (
                             <>
-                              {isAdmin && <Link href="/admin">Admin</Link>}
+                              {session.user?.isAdmin && <Link href="/admin">Admin</Link>}
+                              <form action={handleLogout}>
+
                               <button>Logout</button>
+                              </form>
                             </>
                           ) : (
                             <Link href="/login">Login</Link>

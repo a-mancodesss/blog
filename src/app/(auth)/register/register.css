@@ -1,0 +1,6 @@
+.form-container{
+    @apply mx-auto w-5/6 gap-y-2 flex flex-col items-center justify-center
+}
+input{
+    @apply py-2 border-[.5px] border-gray-300  w-full px-2 focus:outline-none focus:border-blue-900 focus:border-[.5px]
+}
