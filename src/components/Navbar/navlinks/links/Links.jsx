@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import "./links.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { use, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { handleLogout } from "src/database/action";
 
 const Links = ({ nav,session }) => {
@@ -12,9 +12,9 @@ const Links = ({ nav,session }) => {
   const pathname = usePathname();
 
   //re-rendering everytime session changes
-  useEffect(()=>{
-    console.log('session changed')
-  },[session])
+  // useEffect(()=>{
+  //   console.log('session changed')
+  // },[session])
 console.log(session)
 
   return (
