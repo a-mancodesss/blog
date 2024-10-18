@@ -1,4 +1,5 @@
 "use server"//making server actions
+import bcrypt from 'bcryptjs';
 import { revalidatePath } from "next/cache";
 import { connectToDb } from "./connect";
 import { Post,User } from "./model";
@@ -28,46 +29,79 @@ export const deletePost = async (formData) => {
         console.log(id);
         await Post.findByIdAndDelete(id);
          revalidate('/blog')
-    }
-    catch(e){
-        console.log('Error in adding post to db',e)
-    }
-    redirect('/blog');
+        }
+        catch(e){
+            console.log('Error in adding post to db',e)
+        }
+        redirect('/blog');
 
    
 }
 export const handleGithubLogin = async() => {
-   
-    await signIn("github")
-    console.log('Logged in successfully✅');
-   
+
+
+        await signIn("github")
+        console.log('Logged in successfully ✅');
+       
+    
+ 
   }
 export const handleLogout = async() => {
-   
-    await signOut("github")
-    console.log('Logged out successfully✅');
+  
+        await signOut()
+        console.log('Logged out successfully✅');
+        revalidate('/login')
+    
+ 
    
   }
-  export const hangleRegister = async (formData) => {
-    const {name,email,password,passwordRepeat,imgUrl} = Object.fromEntries(formData);
-    if(password !== passwordRepeat){
-        console.log('Passwords do not match ❗');
-       return;
-    }
+
+
+  export const handleCredentialLogin = async (formData) => {
+    const {name,password} = Object.fromEntries(formData);
+    let isError=false;
     try{
+        await signIn('credentials',{name,password})
+        console.log('Logged in successfully✅');
+        
+    }
+    catch(e){
+        console.log('❗Login Error :',e)
+        isError=true;
+        throw e;//added this to prevent REDIRECT_ERROR by using redirect 
+    }
+    if(!isError){
+
+        redirect('/')
+    }
+  
+}
+  export const handleRegister = async (formData) => {
+    let isError=false;
+    const {name,email,password,passwordRepeat,imgUrl} = Object.fromEntries(formData);
+    try{
+        if(password !== passwordRepeat){
+            throw('Passwords do not match❗');
+    
+        }
         connectToDb();
         const user = await User.findOne({name:name});
         if(user){
-            console.log('User already exists❗');
-            return;
+            throw('User already exists❗');
          
         }
-        const newUser = new User({name,email,password,imgUrl});
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+        const newUser = new User({name,email,password:hashedPassword,imgUrl});
         await newUser.save();
-        console.log('Registered successfully✅');
+        console.log('User registered successfully✅');
     }
     catch(e){
-        console.log('Error in adding user to db',e)
+        console.error('Error: ',e)
+        isError=true;
     }
-    redirect('/login');
+    console.log('isError:',isError)
+    if(!isError){
+        redirect('/login')
+    }
 }
