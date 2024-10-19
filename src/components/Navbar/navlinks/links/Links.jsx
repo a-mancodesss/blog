@@ -15,7 +15,8 @@ const Links = ({ nav,session }) => {
   // useEffect(()=>{
   //   console.log('session changed')
   // },[session])
-console.log(session)
+const username  = session?.user?.name
+
 
   return (
     <div className="z-10  ">
@@ -34,7 +35,9 @@ console.log(session)
 
         {session?.user ? (
           <> 
-            {session.user?.isAdmin && <Link href="/admin">Admin</Link>} 
+            {session.user?.isAdmin && 
+            <Link className="text-yellow-400" href="/admin">{username}</Link>
+            } 
             <form action={handleLogout}>
 
             <button>Logout</button>
@@ -65,9 +68,9 @@ console.log(session)
                   </Link>
                 ))}
 
-                  {session?.user ? (
+                  {session?.user? (
                             <>
-                              {session.user?.isAdmin && <Link href="/admin">Admin</Link>}
+                              {session.user?.isAdmin &&  <Link className="text-yellow-400" href="/admin">{username}</Link>}
                               <form action={handleLogout}>
 
                               <button>Logout</button>

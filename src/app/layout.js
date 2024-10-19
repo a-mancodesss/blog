@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 // import { Login } from "@/components/Login/Login";
 
 export const metadata = {
+  tags:['all'],
   title: {
     default:"Aman BlogApp Homepage",
     template:"%s | Aman BlogApp"

@@ -13,13 +13,13 @@ const LoginPage = async() => {
   <div className=" border mx-auto border-black  sm:w-1/2 w-5/6 py-20">
 
   <form action={handleCredentialLogin} className='form-container' >
-  <h1 className='text-2xl font-bold'>Login Using Credential</h1>
+  <h1 className='text-2xl font-bold'>User Login</h1>
 
   <input type="text" placeholder="Username" name="name" />
     <input type="email" placeholder="Email" name="email" />
     <input type="password" placeholder="Password" name="password" />
    
-    <button className='bg-blue-950 w-full text-white py-2'>Login with Cred</button>
+    <button className='bg-blue-950 w-full text-white py-2'>Login</button>
   </form>
   </div>
     </div>

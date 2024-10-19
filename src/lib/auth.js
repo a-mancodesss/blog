@@ -23,6 +23,7 @@ const login = async(credentials)=>{
 }
 catch(e){
   throw e;
+  
 }
 }
 
@@ -36,8 +37,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     CredentialsProvider({
       async authorize(credentials){
         try{
-          const user = await login(credentials)
-          return user
+          const user = await login(credentials)   
+          if(user){
+            return user
+          }
+            throw('User not found')  
         }
           catch(e){
           throw e
@@ -47,26 +51,31 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ],
   callbacks:{
     async signIn({user, account, profile}){
-        // console.log(user,account,profile)
+    
         if(account.provider==='github'){
            connectToDb()
            try{
-
-               const user = await User.findOne({email:profile.email})
-               if(!user){
+         
+               const dbUser = await User.findOne({email:profile.email})
+               if(!dbUser){
+                console.log('hey at middle when creating new')
                 const  newUser = new User({
                     name:profile.login,
                     email:profile.email,
                     imgUrl:profile.avatar_url,
+                    isAdmin:true,// if needed admin with gh account->will manually change this to true
                 })
                 await newUser.save();
+                return dbUser;
                }
+               console.log('The final source of truth: ',user)
            }
            catch(e){
                 console.log('Error in finding user',e)
                 return false;
            }
         }
+        console.log('is it even passing right')
         return true;
     },
     ...authConfig.callbacks,

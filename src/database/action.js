@@ -1,6 +1,6 @@
 "use server"//making server actions
 import bcrypt from 'bcryptjs';
-import { revalidatePath } from "next/cache";
+import { revalidatePath,revalidateTag } from "next/cache";
 import { connectToDb } from "./connect";
 import { Post,User } from "./model";
 import { redirect } from "next/navigation";
@@ -17,6 +17,21 @@ export const addPost = async (formData) => {
     }
     catch(e){
         console.log('Error in adding post to db',e)
+    }
+    redirect('/blog')
+   
+}
+export const updatePost = async (formData) => {
+    const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);  
+    try{
+        // console.log('post id on server action:',id)
+        connectToDb();
+        await Post.findByIdAndUpdate(id,{title,description,imgUrl,userId},{new:true});
+        revalidatePath('/blog')
+        
+    }
+    catch(e){
+        console.log('Error in updating post to db',e)
     }
     redirect('/blog')
    
@@ -68,12 +83,17 @@ export const handleLogout = async() => {
     catch(e){
         console.log('❗Login Error :',e)
         isError=true;
-        throw e;//added this to prevent REDIRECT_ERROR by using redirect 
+        if(e?.message === 'NEXT_REDIRECT'){
+            isError=false;
+        }
+        
+        // throw e;//added this to prevent REDIRECT_ERROR by using redirect 
     }
     if(!isError){
 
         redirect('/')
     }
+    revalidateTag('all')
   
 }
   export const handleRegister = async (formData) => {

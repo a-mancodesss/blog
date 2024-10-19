@@ -1,12 +1,14 @@
 
-import { deletePost } from 'src/database/action';
+import Link from 'next/link';
+import { deletePost, updatePost } from 'src/database/action';
 import {getPost} from 'src/database/data'
+import { auth } from 'src/lib/auth';
 export const SinglePostPage = async({params}) => {
 const {postId}= params
 
 
 const post = await getPost(postId, { cache: 'no-store' });  
-
+const session = await auth()
   return (
     <div className='singlePostContainer flex min-h-screen gap-4 flex-col sm:flex-row'>
       <div className="left sm:w-2/5 w-full sm:block py-4  ">
@@ -34,8 +36,14 @@ const post = await getPost(postId, { cache: 'no-store' });
           </div>
           <form className="delete" action={deletePost}>
           <input type="hidden" name="id" value={postId} />
-          <button className="delete-key font-semibold text-slate-700 border-red-900 border p-2 cursor-pointer hover:bg-red-900 hover:text-white ">Delete</button>
-          </form>
+          {post.userId === session?.user?.name && ( <> <button className="delete-key font-semibold text-slate-700 border-red-900 border p-2 cursor-pointer hover:bg-red-900 hover:text-white ">Delete</button>  <Link href={`/updatePost?id=${postId}`}>Update</Link> </>)}
+            </form>
+            {/* <form className='update' action={updatePost}>
+              <input type="hidden" name="id" value={postId} />
+            {post.userId !== session?.user?.name && (
+              <Link href="/createPost">Update</Link>
+            )}
+            </form> */}
         </div>
         <div className="description text-lg sm:text-xl font-extralight text-pretty">
           {post.description}
