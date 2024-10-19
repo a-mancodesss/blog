@@ -1,6 +1,6 @@
 import React from 'react'
 import Links from './links/Links'
-import { auth } from 'src/lib/auth'
+import { auth } from '@/lib/auth'
 
 const nav =[
        

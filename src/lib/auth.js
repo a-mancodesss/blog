@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { connectToDb } from "src/database/connect";
-import { User } from "src/database/model";
+import { connectToDb } from "@/database/connect";
+import { User } from "@/database/model";
 import bcrypt from 'bcryptjs'
 import {authConfig} from './auth.config'
 

@@ -1,6 +1,6 @@
 import './updatePost.css'
-import { updatePost } from 'src/database/action'
-import { auth } from 'src/lib/auth'
+import { updatePost } from '@/database/action'
+import { auth } from '@/lib/auth'
 const page = async({searchParams}) => {
 const session = await auth()
 const {id}= searchParams

@@ -1,6 +1,6 @@
 import './createPost.css'
-import { addPost } from 'src/database/action'
-import { auth } from 'src/lib/auth'
+import { addPost } from '@/database/action'
+import { auth } from '@/lib/auth'
 const page = async() => {
 const session = await auth()
 const author = session?.user?.name

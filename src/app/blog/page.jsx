@@ -3,9 +3,9 @@ export const metadata = {
   description: "Blogs description",
 };
 //import scrollToTop component
-import ScrollToTop from 'src/components/ScrollToTop/ScrollToTop'
-import PostCard from 'src/components/PostCard/PostCard'
-import { getPosts } from 'src/database/data'
+import ScrollToTop from '@/components/ScrollToTop/ScrollToTop'
+import PostCard from '@/components/PostCard/PostCard'
+import { getPosts } from '@/database/data'
 const BlogPosts = async() => {
  const blogPosts = await getPosts({cache: 'no-store'});
 

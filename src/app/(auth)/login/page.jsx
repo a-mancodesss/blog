@@ -1,5 +1,5 @@
 import './credential-login.css'
-import { handleCredentialLogin, handleGithubLogin } from 'src/database/action'
+import { handleCredentialLogin, handleGithubLogin } from '@/database/action'
 
 const LoginPage = async() => {
   return (

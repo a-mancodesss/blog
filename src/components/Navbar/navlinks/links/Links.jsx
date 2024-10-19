@@ -5,7 +5,7 @@ import "./links.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, {  useState } from "react";
-import { handleLogout } from "src/database/action";
+import { handleLogout } from "@/database/action"
 
 const Links = ({ nav,session }) => {
   const [isOpen, setIsOpen] = useState(false);

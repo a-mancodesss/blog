@@ -1,7 +1,7 @@
 
 import Link from 'next/link'
 
-import { handleRegister } from 'src/database/action';
+import { handleRegister } from '@/database/action';
 const RegisterForm = () => {
   
   // const [state, formAction] = useActionState(handleRegister, undefined); //didn't work as its R19 experimental feature it says.

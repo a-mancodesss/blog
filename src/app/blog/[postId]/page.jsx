@@ -1,8 +1,8 @@
 
 import Link from 'next/link';
-import { deletePost, updatePost } from 'src/database/action';
-import {getPost} from 'src/database/data'
-import { auth } from 'src/lib/auth';
+import { deletePost } from '@/database/action';
+import {getPost} from '@/database/data'
+import { auth } from '@/lib/auth';
 export const SinglePostPage = async({params}) => {
 const {postId}= params
 

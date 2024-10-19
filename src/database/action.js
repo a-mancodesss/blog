@@ -43,7 +43,7 @@ export const deletePost = async (formData) => {
         connectToDb();
         console.log(id);
         await Post.findByIdAndDelete(id);
-         revalidate('/blog')
+         revalidatePath('/blog')
         }
         catch(e){
             console.log('Error in adding post to db',e)
@@ -65,7 +65,7 @@ export const handleLogout = async() => {
   
         await signOut()
         console.log('Logged out successfully✅');
-        revalidate('/login')
+        revalidatePath('/login')
     
  
    
