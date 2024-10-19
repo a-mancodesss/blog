@@ -1,6 +1,7 @@
 export const authConfig = {
+  basePath:'https://amanlog.vercel.app',
   pages: {
-    signIn: "/login",
+    signIn: '/login',
   },
   providers: [],
   callbacks: {
