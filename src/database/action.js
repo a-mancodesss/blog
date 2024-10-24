@@ -8,7 +8,6 @@ import {signIn, signOut} from '../lib/auth'
 export const addPost = async (formData) => {
     const {title,description,imgUrl,userId} = Object.fromEntries(formData);  
     try{
-        console.log(imgUrl)
         connectToDb();
         const newPost = new Post({title,description,imgUrl,userId});
         await newPost.save();
