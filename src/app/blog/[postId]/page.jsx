@@ -32,7 +32,7 @@ const session = await auth()
           </div>
           <div className="published">
             <div className="published-key font-semibold text-slate-700">Published</div>
-            <div className="published-value">{new Date(post.createdAt)?.toLocaleString()}</div>
+            <div className="published-value">{new Date(post.createdAt)?.toLocaleString('en-US', { timeZone: 'Asia/Kathmandu' })}</div>
           </div>
           <form className="delete" action={deletePost}>
           <input type="hidden" name="id" value={postId} />
