@@ -19,10 +19,10 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
               <div className=" text-container sm:w-[200px] flex flex-col flex-wrap ">
                 <div className="text-xl font-bold mb-2">{title}</div>
                 <div className="text-gray-500">{author}</div>
-                <p className="">{description}</p>
+                <p className="hidden">{description}</p>
               </div>
             </div>
-            <div className="right text-blue-900 font-semibold mt-2">
+            <div className="right flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2">
               <Link href={`blog/${slug}`} className="">
                 Read more ---
               </Link>
