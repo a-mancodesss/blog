@@ -19,12 +19,12 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
               <div className=" text-container sm:w-[200px] flex flex-col flex-wrap ">
                 <div className="text-xl font-bold mb-2">{title}</div>
                 <div className="text-gray-500">{author}</div>
-                <p className="hidden sm:block">{description}</p>
+                <p className="hidden sm:block">{description.split(' ').slice(0, 2).join(' ')}...</p>
               </div>
             </div>
             <div className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2">
               <Link href={`blog/${slug}`} className="">
-                Read more ---
+                Read more
               </Link>
             </div>
           </div>
