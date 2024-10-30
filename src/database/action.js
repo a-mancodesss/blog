@@ -30,7 +30,8 @@ export const addPost = async (formData) => {
 }
 export const updatePost = async (formData) => {
     const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);
-    let imageUrl = null;  
+    const post = await getPost(id);  
+    let imageUrl = post.imgUrl;  
     if (imgUrl && imgUrl.name) {
         const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`); // Unique filename
         try {
@@ -43,6 +44,7 @@ export const updatePost = async (formData) => {
     try{
         // console.log('post id on server action:',id)
         connectToDb();
+
         await Post.findByIdAndUpdate(id,{title,description,imgUrl:imageUrl||imgUrl,userId},{new:true});
         revalidatePath('/blog')
         
