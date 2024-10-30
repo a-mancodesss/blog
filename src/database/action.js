@@ -34,7 +34,7 @@ export const updatePost = async (formData) => {
     const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`);
     try{
         connectToDb();
-        if(imgUrl){
+        if(imgUrl && imgUrl.name){
             await uploadBytes(storageRef, imgUrl);
             const url = await getDownloadURL(storageRef);
             await Post.findByIdAndUpdate(id,{title,description,imgUrl:url,userId},{new:true});
