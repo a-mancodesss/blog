@@ -29,14 +29,21 @@ export const addPost = async (formData) => {
    
 }
 export const updatePost = async (formData) => {
-    const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);  
-    const storageRef = ref(storage, `images/${imgUrl.name}`);
+    const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);
+    let imageUrl = null;  
+    if (imgUrl && imgUrl.name) {
+        const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`); // Unique filename
+        try {
+            await uploadBytes(storageRef, imgUrl);
+            imageUrl = await getDownloadURL(storageRef);
+        } catch (error) {
+            console.log('Error uploading image:', error);
+        }
+    }
     try{
         // console.log('post id on server action:',id)
-        await uploadBytes(storageRef, imgUrl);
-        const url = await getDownloadURL(storageRef);
         connectToDb();
-        await Post.findByIdAndUpdate(id,{title,description,imgUrl:url,userId},{new:true});
+        await Post.findByIdAndUpdate(id,{title,description,imgUrl:imageUrl||imgUrl,userId},{new:true});
         revalidatePath('/blog')
         
     }
