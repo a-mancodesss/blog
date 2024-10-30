@@ -11,8 +11,9 @@ import { storage } from '@/config/firebaseConfig';
 
 export const addPost = async (formData) => {
     const {title,description,imgUrl,userId} = Object.fromEntries(formData);  
-    const timeStamp = Date.now();
-    const storageRef = ref(storage, `images/${imgUrl.name}_${timeStamp}`);
+    
+    const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`);
+    
     try{
         await uploadBytes(storageRef, imgUrl);
         const url = await getDownloadURL(storageRef);
@@ -29,23 +30,19 @@ export const addPost = async (formData) => {
    
 }
 export const updatePost = async (formData) => {
-    const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);
-    const post = await getPost(id);  
-    let imageUrl = post.imgUrl;  
-    if (imgUrl && imgUrl.name) {
-        const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`); // Unique filename
-        try {
-            await uploadBytes(storageRef, imgUrl);
-            imageUrl = await getDownloadURL(storageRef);
-        } catch (error) {
-            console.log('Error uploading image:', error);
-        }
-    }
+    const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);  
+    const storageRef = ref(storage, `images/${imgUrl.name}_${Date.now()}`);
     try{
-        // console.log('post id on server action:',id)
         connectToDb();
-
-        await Post.findByIdAndUpdate(id,{title,description,imgUrl:imageUrl||imgUrl,userId},{new:true});
+        if(imgUrl){
+            await uploadBytes(storageRef, imgUrl);
+            const url = await getDownloadURL(storageRef);
+            await Post.findByIdAndUpdate(id,{title,description,imgUrl:url,userId},{new:true});
+        }
+        // console.log('post id on server action:',id)
+        else{
+        await Post.findByIdAndUpdate(id,{title,description,userId},{new:true});
+        }
         revalidatePath('/blog')
         
     }
