@@ -12,7 +12,7 @@ const author = session?.user?.name
         <h1 className='text-2xl font-bold'>Create Post</h1>
         <input type="text" name="title" id="title" placeholder='Title' />
         <input type="text" name="description" id="desc" placeholder='Description...' />
-        <input type="text" name="imgUrl" id="imgUrl" placeholder='Image Url' />
+        <input type="file" name="imgUrl" id="imgUrl" placeholder='Image' />
         <input type="hidden" value={author} name="userId" id="userId" placeholder='Author' />
         <button type="submit" className='bg-blue-950 w-full text-white py-2'>Submit</button>
 

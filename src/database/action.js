@@ -5,11 +5,18 @@ import { connectToDb } from "./connect";
 import { Post,User } from "./model";
 import { redirect } from "next/navigation";
 import {signIn, signOut} from '../lib/auth'
+
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from '@/config/firebaseConfig';
+
 export const addPost = async (formData) => {
     const {title,description,imgUrl,userId} = Object.fromEntries(formData);  
+    const storageRef = ref(storage, `images/${imgUrl.name}`);
     try{
+        await uploadBytes(storageRef, imgUrl);
+        const url = await getDownloadURL(storageRef);
         connectToDb();
-        const newPost = new Post({title,description,imgUrl,userId});
+        const newPost = new Post({title,description,imgUrl:url,userId});
         await newPost.save();
         revalidatePath('/blog')
         
@@ -22,10 +29,13 @@ export const addPost = async (formData) => {
 }
 export const updatePost = async (formData) => {
     const {id,title,description,imgUrl,userId} = Object.fromEntries(formData);  
+    const storageRef = ref(storage, `images/${imgUrl.name}`);
     try{
         // console.log('post id on server action:',id)
+        await uploadBytes(storageRef, imgUrl);
+        const url = await getDownloadURL(storageRef);
         connectToDb();
-        await Post.findByIdAndUpdate(id,{title,description,imgUrl,userId},{new:true});
+        await Post.findByIdAndUpdate(id,{title,description,imgUrl:url,userId},{new:true});
         revalidatePath('/blog')
         
     }
