@@ -17,7 +17,7 @@ const author = session?.user?.name
         <input type="hidden" name="id" value={id} />
         <input type="text" name="title" id="title" placeholder='Title' defaultValue={post.title} />
         <input type="text" name="description" id="desc" placeholder='Description...' defaultValue={post.description} />
-        <input type="text" name="imgUrl" id="imgUrl" placeholder='Image Url' defaultValue={post.imagUrl} />
+        <input type="text" name="imgUrl" id="imgUrl" placeholder='Image Url' defaultValue={post.imgUrl} />
         <input type="hidden" value={author} name="userId" id="userId" placeholder='Author' />
         <button type="submit" className='bg-blue-950 w-full text-white py-2'>Update</button>
 
