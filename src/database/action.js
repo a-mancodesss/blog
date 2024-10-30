@@ -11,7 +11,8 @@ import { storage } from '@/config/firebaseConfig';
 
 export const addPost = async (formData) => {
     const {title,description,imgUrl,userId} = Object.fromEntries(formData);  
-    const storageRef = ref(storage, `images/${imgUrl.name}`);
+    const timeStamp = Date.now();
+    const storageRef = ref(storage, `images/${imgUrl.name}_${timeStamp}`);
     try{
         await uploadBytes(storageRef, imgUrl);
         const url = await getDownloadURL(storageRef);
