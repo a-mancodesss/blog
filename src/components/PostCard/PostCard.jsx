@@ -23,7 +23,7 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
               </div>
             </div>
            
-              <Link className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2" href={`blog/${slug}`} className="">
+              <Link className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2" href={`blog/${slug}`}>
                 Read more
               </Link>
         
