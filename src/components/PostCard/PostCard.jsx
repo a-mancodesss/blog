@@ -22,7 +22,7 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
                 <p className="">{description.split(' ').slice(0, 3).join(' ')} ...</p>
               </div>
             </div>
-            <div className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2">
+            <div asChild className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2">
               <Link href={`blog/${slug}`} className="">
                 Read more
               </Link>
