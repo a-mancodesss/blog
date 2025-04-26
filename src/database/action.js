@@ -107,7 +107,7 @@ export const handleLogout = async() => {
     }
     if(!isError){
 
-        redirect('/')
+        redirect('/blog')
     }
     revalidateTag('all')
   
