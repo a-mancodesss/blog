@@ -7,7 +7,7 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
     <>
       <div className="card-container flex flex-col sm:flex-row  items-center">
         
-        <div className="group max-w-fit border  shadow-sm  shadow-blue-700/[50%] rounded-md px-2 py-4  flex flex-col cursor-pointer gap-y-4">
+        <div className="group max-w-fit px-2 py-4 bg-slate-900 rounded-xl sm:rounded-2xl flex flex-col cursor-pointer gap-y-4">
           <div className="top w-[315px] overflow-hidden  relative">
             <div className=" transition-all duration-300 image-container relative h-[150px] w-[300px] sm:h-[300px] mx-auto">
               <Image className="object-cover rounded-md " alt="image" src={imgUrl?imgUrl:"https://dummyimage.com/600x400/000/fff"} fill priority/>
@@ -23,7 +23,7 @@ const PostCard = ({ title, author, description, imgUrl,slug }) => {
               </div>
             </div>
            
-              <Link className="right py-2 flex justify-center bg-slate-900 rounded-md text-white font-semibold mt-2" href={`blog/${slug}`}>
+              <Link className="right py-2 flex justify-center rounded-xl bg-slate-800  text-orange-400a font-semibold mt-2" href={`blog/${slug}`}>
                 Read more
               </Link>
         
