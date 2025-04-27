@@ -20,7 +20,6 @@ const RegisterForm = () => {
       placeholder="Password again"
       name="passwordRepeat"
       />
-    <input type="text" placeholder="ImageUrl" name="imgUrl" />
 
     <button className='mt-4 mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 hover:bg-orange-500 py-2'>Register</button>
     {/* {state?.error && <p>{state.error}</p>} */}

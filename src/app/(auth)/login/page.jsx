@@ -10,8 +10,6 @@ const LoginPage = async() => {
 
   <form action={handleCredentialLogin} className='form-container' >
   <h1 className='text-2xl font-bold'>User Login</h1>
-
-  <input type="text" placeholder="Username" name="name" />
     <input type="email" placeholder="Email" name="email" />
     <input type="password" placeholder="Password" name="password" />
    

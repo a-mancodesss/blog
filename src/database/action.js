@@ -80,10 +80,10 @@ export const handleLogout = async() => {
 
 
   export const handleCredentialLogin = async (formData) => {
-    const {name,password} = Object.fromEntries(formData);
+    const {email,password} = Object.fromEntries(formData);
     let isError=false;
     try{
-        await signIn('credentials',{name,password})
+        await signIn('credentials',{email,password})
         console.log('Logged in successfully✅');
         
     }
@@ -105,7 +105,7 @@ export const handleLogout = async() => {
 }
   export const handleRegister = async (formData) => {
     let isError=false;
-    const {name,email,password,passwordRepeat,imgUrl} = Object.fromEntries(formData);
+    const {name,email,password,passwordRepeat} = Object.fromEntries(formData);
     try{
         if(password !== passwordRepeat){
             throw('Passwords do not match❗');
@@ -113,13 +113,13 @@ export const handleLogout = async() => {
         }
         connectToDb();
         const user = await User.findOne({email});
-        if(email){
+        if(user){
             throw('User already exists with that email❗');
          
         }
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = new User({name,email,password:hashedPassword,imgUrl});
+        const newUser = new User({name,email,password:hashedPassword});
         await newUser.save();
         console.log('User registered successfully✅');
     }

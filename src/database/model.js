@@ -20,10 +20,6 @@ const userSchema = new Schema({
         min:8,
         max:20
     },
-    imgUrl:{
-        type:String,
-        default:""
-    },
     isAdmin:{
         type:Boolean,
         default:false
