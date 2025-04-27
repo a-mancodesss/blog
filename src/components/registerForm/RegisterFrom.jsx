@@ -2,6 +2,7 @@
 import Link from 'next/link'
 
 import { handleRegister } from '@/database/action';
+import './registerFrom.css'
 const RegisterForm = () => {
   
   // const [state, formAction] = useActionState(handleRegister, undefined); //didn't work as its R19 experimental feature it says.
@@ -21,10 +22,10 @@ const RegisterForm = () => {
       />
     <input type="text" placeholder="ImageUrl" name="imgUrl" />
 
-    <button className='bg-blue-950 w-full text-white py-2'>Register</button>
+    <button className='mt-4 mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 hover:bg-orange-500 py-2'>Register</button>
     {/* {state?.error && <p>{state.error}</p>} */}
     <Link href="/login">
-      Have an account? <b>Login</b>
+      Have an account? <u>Login</u>
     </Link>
   </form>
       </div>

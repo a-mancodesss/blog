@@ -68,15 +68,6 @@ export const deletePost = async (formData) => {
 
    
 }
-export const handleGithubLogin = async() => {
-
-
-        await signIn("github")
-        console.log('Logged in successfully ✅');
-       
-    
- 
-  }
 export const handleLogout = async() => {
   
         await signOut()
@@ -121,9 +112,9 @@ export const handleLogout = async() => {
     
         }
         connectToDb();
-        const user = await User.findOne({name:name});
-        if(user){
-            throw('User already exists❗');
+        const user = await User.findOne({email});
+        if(email){
+            throw('User already exists with that email❗');
          
         }
         const salt = await bcrypt.genSalt(10);
