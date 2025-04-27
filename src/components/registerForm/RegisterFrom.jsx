@@ -10,7 +10,7 @@ const RegisterForm = () => {
   return (
     <div className=' border mx-auto border-black  sm:w-1/2 w-5/6 py-20 '>
 
-    <form className='form-container' action={handleRegister}>
+    <form className='form-container' action={handleRegister} method='POST'>
     <h1 className='text-2xl font-bold'>Register User</h1>
     <input type="text" placeholder="Username" name="name" />
     <input type="email" placeholder="Email" name="email" />

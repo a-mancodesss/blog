@@ -8,7 +8,7 @@ const LoginPage = async() => {
   {/* credential login form */}
   <div className=" border mx-auto border-black  sm:w-1/2 w-5/6 py-20">
 
-  <form action={handleCredentialLogin} className='form-container' >
+  <form action={handleCredentialLogin} className='form-container' method='POST' >
   <h1 className='text-2xl font-bold'>User Login</h1>
     <input type="email" placeholder="Email" name="email" />
     <input type="password" placeholder="Password" name="password" />

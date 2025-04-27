@@ -111,12 +111,15 @@ export const handleLogout = async() => {
             throw('Passwords do not match❗');
     
         }
+        console.log('Connecting to database')
         connectToDb();
+        console.log('Before the possible error')
         const user = await User.findOne({email});
         if(user){
             throw('User already exists with that email❗');
          
         }
+        console.log('User found, code works 1')
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
         const newUser = new User({name,email,password:hashedPassword});
