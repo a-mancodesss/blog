@@ -17,7 +17,7 @@ const LoginPage = async() => {
    
     <button className="mt-4 mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 hover:bg-orange-500 py-2" >Login</button>
     <Link href="/register">
-      Don't have an account? <u>Register</u>
+      Don&apos;t have an account? <u>Register</u>
     </Link>
   </form>
   </div>
