@@ -16,7 +16,7 @@ const Links = ({ nav,session }) => {
   //   console.log('session changed')
   // },[session])
 const username  = session?.user?.name
-
+console.log(pathname)
 
   return (
     <div className="z-10  ">
@@ -32,20 +32,17 @@ const username  = session?.user?.name
             {n.title}
           </Link>
         ))}
-
-        {session?.user ? (
-          <> 
-            {session.user?.isAdmin && 
-            <Link className="text-yellow-400" href="/admin">{username}</Link>
-            } 
+     
+        {session?.user ? (           
             <form action={handleLogout}>
-
             <button>Logout</button>
-            </form>
-          </>
-        ) : (
+            </form> ) 
+            : 
+            (
           <Link href="/login">Login</Link>
         )}
+           {!session?.user&&<Link href="/register">Register</Link>}
+
       </div>
       </div>
      

@@ -7,7 +7,6 @@ const nav =[
         {title: 'Home', path: '/'},
         {title:'CreatePost',path:'/createPost'},
         {title: 'Blog', path: '/blog'},
-        {title: 'Register', path: '/register'},
 
     
 ]

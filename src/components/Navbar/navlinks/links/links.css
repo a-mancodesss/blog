@@ -1,5 +1,5 @@
 .isActive{
-    @apply text-blue-400 
+    @apply text-orange-400 
 }
 .custom-min-h {
     min-height: 100vh;
