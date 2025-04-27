@@ -114,7 +114,7 @@ export const handleLogout = async() => {
         console.log('Connecting to database')
         connectToDb();
         console.log('Before the possible error')
-        const user = await User.findOne({email});
+        const user = await User.findOne({email:email});
         if(user){
             throw('User already exists with that email❗');
          
