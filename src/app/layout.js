@@ -15,8 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body  className={`font-sans`} > 
-      <div className="wrapper flex flex-col justify-between min-h-screen bg-blue-50">
-
+      <div className="wrapper flex flex-col justify-between min-h-screen bg-slate-950 text-white">
       <Navbar/>
       <div className="px-4 sm:px-14 ">
         {children}

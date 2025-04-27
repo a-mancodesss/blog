@@ -57,7 +57,7 @@ const username  = session?.user?.name
          </button>
       <div className=" wrapper text-xl">
       {isOpen && 
-              <div className=" fixed bg-slate-900 right-0 top-0 w-3/5 flex flex-col  gap-8  justify-center items-center min-h-[104.44vh]">
+              <div className=" fixed bg-slate-950 right-0 top-0 w-3/5 flex flex-col  gap-8  justify-center items-center min-h-[104.44vh]">
                 {nav.map((n) => (
                   <Link
                     className={`${pathname === n.path && "isActive"} `}
