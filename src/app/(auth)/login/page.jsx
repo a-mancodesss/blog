@@ -1,14 +1,29 @@
+'use client'
 import Link from 'next/link'
 import './credential-login.css'
 import { handleCredentialLogin } from '@/database/action'
+import toast, { Toaster } from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
 
 const LoginPage = async() => {
+    const router = useRouter()
+    const onSubmit =async(formData)=>{
+      const res = await handleCredentialLogin(formData)
+      if (res?.error) {
+        toast.error(res.error);
+      } else {
+        toast.success(res.success)
+        setTimeout(() => router.push("/blog"), 1000)
+      }
+      }  
+  
   return (
     <div className=''>
+      <Toaster/>
   {/* credential login form */}
   <div className=" border mx-auto border-black  sm:w-1/2 w-5/6 py-20">
 
-  <form action={handleCredentialLogin} className='form-container' method='POST' >
+  <form action={onSubmit} className='form-container' method='POST' >
   <h1 className='text-2xl font-bold'>User Login</h1>
     <input type="email" placeholder="Email" name="email" />
     <input type="password" placeholder="Password" name="password" />

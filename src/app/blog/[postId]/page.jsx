@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { deletePost } from '@/database/action';
 import {getPost} from '@/database/data'
 import { auth } from '@/lib/auth';
-import { Delete, Pencil, PenLine, Trash } from 'lucide-react';
+import { Pencil, Trash } from 'lucide-react';
 export const SinglePostPage = async({params}) => {
 const {postId}= params
 

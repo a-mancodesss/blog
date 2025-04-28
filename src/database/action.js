@@ -81,42 +81,30 @@ export const handleLogout = async() => {
 
   export const handleCredentialLogin = async (formData) => {
     const {email,password} = Object.fromEntries(formData);
-    let isError=false;
     try{
-        await signIn('credentials',{email,password})
-        console.log('Logged in successfully✅');
-        
+        const res =  await signIn('credentials',{email,password,redirect:false})
+        if(res.error){
+            throw new Error(res.error);
+        }
+        return { success: "Logged in successfully" };
     }
     catch(e){
-        console.log('❗Login Error :',e)
-        isError=true;
-        if(e?.message === 'NEXT_REDIRECT'){
-            isError=false;
-        }
-        
-        // throw e;//added this to prevent REDIRECT_ERROR by using redirect 
-    }
-    if(!isError){
-
-        redirect('/blog')
-    }
-    revalidateTag('all')
+        console.error('The actual error---->',e.message)
+        return {error:'Invalid Credentials'}
+     }
   
 }
   export const handleRegister = async (formData) => {
-    let isError=false;
     const {name,email,password,passwordRepeat} = Object.fromEntries(formData);
     try{
         if(password !== passwordRepeat){
-            throw('Passwords do not match❗');
+            throw('Passwords do not match');
     
         }
-        console.log('Connecting to database')
         connectToDb();
-        console.log('Before the possible error')
         const user = await User.findOne({email:email});
         if(user){
-            throw('User already exists with that email❗');
+            throw('User already exists with that email');
          
         }
         console.log('User found, code works 1')
@@ -124,14 +112,10 @@ export const handleLogout = async() => {
         const hashedPassword = await bcrypt.hash(password, salt);
         const newUser = new User({name,email,password:hashedPassword});
         await newUser.save();
-        console.log('User registered successfully✅');
+        return {success:'User registered successfully'};
     }
     catch(e){
-        console.error('Error: ',e)
-        isError=true;
-    }
-    console.log('isError:',isError)
-    if(!isError){
-        redirect('/login')
+        console.log(e)
+        return {error:e}
     }
 }

@@ -10,11 +10,11 @@ const login = async(credentials)=>{
     connectToDb()
     const user= await User.findOne({email:credentials.email})
     if(!user){
-      throw('No user found with that email, please register first.')
+      throw new Error('No user found with that email, please register first.')
     }
     const isPasswordCorrect = await bcrypt.compare(credentials.password,user.password)
     if(!isPasswordCorrect){
-      throw('Password is incorrect, please try again.')
+      throw new Error('Password is incorrect, please try again.')
     }
     return user;
 }
@@ -28,16 +28,15 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     CredentialsProvider({
+      name:'Credentials',
       async authorize(credentials){
         try{
           const user = await login(credentials)   
-          if(user){
-            return user
-          }
-            throw('User not found with that email')  
-        }
-          catch(e){
-          throw e
+          return user       
+      }
+    catch(e){
+          console.error('Login error------>',e)
+          return null // Return null to trigger `result.error` in `signIn`
         }
       }
     }),

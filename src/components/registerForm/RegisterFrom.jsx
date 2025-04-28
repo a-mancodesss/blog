@@ -1,16 +1,25 @@
-
+'use client'
 import Link from 'next/link'
 
 import { handleRegister } from '@/database/action';
 import './registerFrom.css'
+import toast, { Toaster } from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 const RegisterForm = () => {
-  
-  // const [state, formAction] = useActionState(handleRegister, undefined); //didn't work as its R19 experimental feature it says.
-  // useEffect(() => {state?.success && router.push('/login')},[state?.success,router])
+    const router = useRouter()
+    const onSubmit =async(formData)=>{
+      const res = await handleRegister(formData)
+      if (res.error) {
+        toast.error(res.error);
+      } else {
+        toast.success(res.success)
+        setTimeout(() => router.push("/login"), 1000)
+      }
+      }
   return (
     <div className=' border mx-auto border-black  sm:w-1/2 w-5/6 py-20 '>
-
-    <form className='form-container' action={handleRegister} method='POST'>
+      <Toaster/>
+    <form className='form-container' action={onSubmit}>
     <h1 className='text-2xl font-bold'>Register User</h1>
     <input type="text" placeholder="Username" name="name" />
     <input type="email" placeholder="Email" name="email" />
