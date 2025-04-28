@@ -6,7 +6,8 @@ AmanLog is a full-stack blog application with full CRUD functionality and a resp
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://amanlog.vercel.app/)
 
-![AmanLog](https://github.com/user-attachments/assets/8872c301-ad4d-4ba9-a8db-f936b12aea54)
+![image](https://github.com/user-attachments/assets/e6105032-98a2-4bc5-ae99-0c140a91cf2f)
+
 
 
 ## Features
