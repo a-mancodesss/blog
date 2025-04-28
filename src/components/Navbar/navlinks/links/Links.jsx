@@ -10,7 +10,9 @@ import { handleLogout } from "@/database/action"
 const Links = ({ nav,session }) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
+  const toggleDiv = () => {
+    setIsOpen((prevState) => !prevState);
+  };
   //re-rendering everytime session changes
   // useEffect(()=>{
   //   console.log('session changed')
@@ -48,12 +50,13 @@ const username  = session?.user?.name
       
 
       {/* for smaller screens */} 
-      <button className="fixed top-4  z-20 sm:hidden  right-6" onClick={()=>setIsOpen(!isOpen) }> 
+      <button className="fixed top-4  z-20 sm:hidden  right-6" onClick={toggleDiv}> 
          {!isOpen ? <Menu size={24} /> : <X size={24} />}
          </button>
-      <div className=" wrapper text-xl">
-      {isOpen && 
-              <div className=" fixed bg-slate-950 right-0 top-0 w-3/5 flex flex-col  gap-8  justify-center items-center min-h-[104.44vh]">
+
+
+      <div className="nav-tray wrapper text-xl">
+              <div className={`fixed-div ${isOpen ? "open" : "closed"}`}>
                 {nav.map((n) => (
                   <Link
                     className={`${pathname === n.path && "isActive"} `}
@@ -63,20 +66,17 @@ const username  = session?.user?.name
                     {n.title}
                   </Link>
                 ))}
+        {session?.user ? (<form action={handleLogout}>  <button>Logout</button>  </form> )  :   (  <Link href="/login">Login</Link>)}
+        {!session?.user&&<Link href="/register">Register</Link>}
 
-                  {session?.user? (
-                            <>
-                              {session.user?.isAdmin &&  <Link className="text-yellow-400" href="/admin">{username}</Link>}
-                              <form action={handleLogout}>
-
-                              <button>Logout</button>
-                              </form>
-                            </>
-                          ) : (
-                            <Link href="/login">Login</Link>
-                          )}
-              </div>}
+              </div>
       </div>
+      {isOpen && (
+        <div
+       className="overlay"
+       onClick={toggleDiv} // Close the tray when overlay is clicked
+    />
+  )}
 
 
      {/* the end  */}
