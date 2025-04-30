@@ -18,7 +18,7 @@ export default async  function Home() {
         <button className="mx-auto w-[150px] bg-orange-500  rounded-full text-white px-4 py-2" >Create Post</button>
         </Link>
         <Link href="/blog">
-        <button className="mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 px-4 py-2" >Browse Blogs</button>
+        <button className="mx-auto w-[150px] text-white border-[1px] rounded-full border-orange-500 px-4 py-2" >Browse Blogs</button>
         </Link>
         <div>
       </div>

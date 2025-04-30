@@ -28,7 +28,7 @@ const LoginPage = async() => {
     <input type="email" placeholder="Email" name="email" />
     <input type="password" placeholder="Password" name="password" />
    
-    <button className="mt-4 mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 hover:bg-orange-500 py-2" >Login</button>
+    <button className="mt-4 mx-auto w-[150px] text-white border-[1px] rounded-full border-orange-500 hover:bg-orange-500 py-2" >Login</button>
     <Link href="/register">
       Don&apos;t have an account? <u>Register</u>
     </Link>

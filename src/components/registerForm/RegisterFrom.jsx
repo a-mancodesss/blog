@@ -30,7 +30,7 @@ const RegisterForm = () => {
       name="passwordRepeat"
       />
 
-    <button className='mt-4 mx-auto w-[150px] text-white border-2 rounded-full border-orange-500 hover:bg-orange-500 py-2'>Register</button>
+    <button className='mt-4 mx-auto w-[150px] text-white border-[1px] rounded-full border-orange-500 hover:bg-orange-500 py-2'>Register</button>
     {/* {state?.error && <p>{state.error}</p>} */}
     <Link href="/login">
       Have an account? <u>Login</u>
