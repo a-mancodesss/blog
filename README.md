@@ -4,7 +4,8 @@ A fullstack blog platform built with Next.js, featuring server-side rendering, s
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://amanlog.vercel.app/)
 
-![image](https://github.com/user-attachments/assets/e6105032-98a2-4bc5-ae99-0c140a91cf2f)
+<img width="1323" height="988" alt="image" src="https://github.com/user-attachments/assets/c898ddf4-066b-4a28-b8e3-0a181899586a" />
+
 
 ## Tech Stack
 
