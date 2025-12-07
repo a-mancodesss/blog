@@ -20,7 +20,7 @@ const ScrollToTop = () => {
   }, [])
 
   return (
-    <div className='fixed bottom-8 right-8 flex flex-col gap-4 z-50 items-center'>
+    <div className='fixed bottom-4 right-4 sm:bottom-8 sm:right-8 flex flex-col gap-3 sm:gap-4 z-50 items-center'>
       
       {/* Create Post Action */}
       <Link href="/createPost" aria-label="Create new post">
