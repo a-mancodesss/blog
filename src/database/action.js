@@ -29,6 +29,7 @@ export const addPost = async (formData) => {
     revalidatePosts();
   } catch (e) {
     console.error("Error in adding post to db", e);
+    return { error: "Could not publish your post. Please try again." };
   }
 
   redirect("/blog");
@@ -57,6 +58,7 @@ export const updatePost = async (formData) => {
     revalidatePosts();
   } catch (e) {
     console.error("Error in updating post to db", e);
+    return { error: "Could not update your post. Please try again." };
   }
 
   redirect("/blog");

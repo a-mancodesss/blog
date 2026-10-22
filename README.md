@@ -15,7 +15,7 @@ A fullstack blog platform built with Next.js, featuring server-side rendering, s
 - **MongoDB + Mongoose** - Database & ODM
 - **NextAuth v5** - Authentication (Credentials provider)
 - **bcrypt.js** - Password hashing
-- **Firebase Storage** - Image uploads
+- **Vercel Blob** - Image uploads
 
 ### Frontend
 - **React 19** - UI components
@@ -27,7 +27,7 @@ A fullstack blog platform built with Next.js, featuring server-side rendering, s
 
 - **Authentication** - Secure registration, login, and session management
 - **CRUD Operations** - Create, read, update, and delete blog posts
-- **Image Uploads** - Firebase Storage integration for media
+- **Image Uploads** - Vercel Blob integration for media
 - **Markdown Support** - Write posts with markdown syntax
 - **Server Actions** - Form submissions handled server-side
 - **Responsive Design** - Mobile-first UI
@@ -39,8 +39,7 @@ src/
 ├── app/              # Next.js App Router pages
 ├── components/       # Reusable UI components
 ├── database/         # MongoDB models, actions & data fetching
-├── lib/              # Auth configuration
-└── config/           # Firebase setup
+└── lib/              # Auth configuration & Vercel Blob image upload
 ```
 
 ## License

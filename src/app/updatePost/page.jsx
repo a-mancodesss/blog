@@ -1,6 +1,7 @@
 import { updatePost } from '@/database/action'
 import { getPost } from '@/database/data'
 import { auth } from '@/lib/auth'
+import ActionForm from '@/components/ActionForm/ActionForm'
 import { notFound } from 'next/navigation'
 
 export const dynamic = "force-dynamic";
@@ -20,7 +21,7 @@ const UpdatePostPage = async ({ searchParams }) => {
       {/* Ambient Background */}
       <div className="w-full max-w-2xl bg-surface p-8 rounded-xl shadow-sm border border-line relative z-10">
         <h1 className="text-3xl font-semibold mb-8 text-center text-ink">Update Post</h1>
-        <form action={updatePost} className="flex flex-col gap-6">
+        <ActionForm action={updatePost} className="flex flex-col gap-6">
           <input type="hidden" name="id" value={id} />
           
           <div className="flex flex-col gap-2">
@@ -68,7 +69,7 @@ const UpdatePostPage = async ({ searchParams }) => {
           >
             Update Post
           </button>
-        </form>
+        </ActionForm>
       </div>
     </div>
   )

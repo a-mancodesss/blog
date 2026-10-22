@@ -1,5 +1,6 @@
 import { addPost } from '@/database/action'
 import { auth } from '@/lib/auth'
+import ActionForm from '@/components/ActionForm/ActionForm'
 
 const CreatePostPage = async () => {
   const session = await auth()
@@ -9,7 +10,7 @@ const CreatePostPage = async () => {
     <div className="flex justify-center items-center py-10 min-h-[calc(100vh-200px)] relative overflow-hidden">
       <div className="w-full max-w-2xl bg-surface p-8 rounded-xl shadow-sm border border-line relative z-10">
         <h1 className="text-3xl font-semibold mb-8 text-center text-ink">Create a New Post</h1>
-        <form action={addPost} className="flex flex-col gap-6">
+        <ActionForm action={addPost} className="flex flex-col gap-6">
           
           <div className="flex flex-col gap-2">
             <label htmlFor="title" className="text-ink text-xs uppercase tracking-wider font-semibold ml-1">Title</label>
@@ -55,7 +56,7 @@ const CreatePostPage = async () => {
           >
             Publish Post
           </button>
-        </form>
+        </ActionForm>
       </div>
     </div>
   )
