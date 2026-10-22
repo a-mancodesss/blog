@@ -1,4 +1,6 @@
 export const authConfig = {
+  // Required by Auth.js v5 when it cannot infer the host (local dev, proxies).
+  trustHost: true,
   pages: {
     signIn: "/login",
   },

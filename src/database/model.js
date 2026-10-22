@@ -49,5 +49,8 @@ const postSchema = new Schema({
  
 },{timestamps:true});
 
+// The blog list is sorted newest-first; without this every request sorts in memory.
+postSchema.index({ createdAt: -1 });
+
 export const User = models?.User || model('User',userSchema); 
 export const Post = models?.Post || model('Post',postSchema); 

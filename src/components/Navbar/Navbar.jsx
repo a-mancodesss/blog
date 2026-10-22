@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { Suspense } from 'react'
 import NavLinks from './navlinks/NavLinks'
 
 const Navbar = () => {
@@ -8,7 +8,10 @@ const Navbar = () => {
         <Link href={'/'} className='font-bold text-2xl tracking-tight hover:text-orange-500 transition-colors duration-200'>
           Aman<span className="text-orange-500">Log</span>
         </Link>
-        <NavLinks/>
+        {/* Session lookup no longer blocks the page shell from streaming. */}
+        <Suspense fallback={<div className="h-10 w-40" aria-hidden="true" />}>
+          <NavLinks/>
+        </Suspense>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import { ArrowRight, User } from "lucide-react";
 
 const PostCard = ({ title, author, description, imgUrl, slug }) => {
   return (
-    <Link href={`blog/${slug}`} className="group w-full max-w-[380px] h-full flex flex-col bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
+    <Link href={`blog/${slug}`} className="group w-full max-w-[380px] h-full flex flex-col bg-slate-900/50 border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]">
       
       <div className="relative w-full h-[220px] overflow-hidden">
         <Image 

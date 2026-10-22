@@ -7,8 +7,10 @@ import { handleLogout } from "@/database/action"
 
 const Links = ({ nav, session }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasOpened, setHasOpened] = useState(false);
   const pathname = usePathname();
   const toggleDiv = () => {
+    setHasOpened(true);
     setIsOpen((prevState) => !prevState);
   };
 
@@ -54,8 +56,13 @@ const Links = ({ nav, session }) => {
          {!isOpen ? <Menu size={24} /> : <X size={24} />}
       </button>
 
-      {/* Mobile Navigation Tray */}
-      <div className={`fixed inset-x-0 top-0 h-screen bg-slate-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}`}>
+      {/* Mobile Navigation Tray (mounted only after first open to keep the
+          initial page paint light) */}
+      {(hasOpened || isOpen) && (
+      <div
+        aria-hidden={!isOpen}
+        className={`fixed inset-x-0 top-0 h-screen bg-slate-950/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 transition-all duration-500 [transition-timing-function:cubic-bezier(0.32,0.72,0,1)] ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"}`}
+      >
         
         <div className="flex flex-col gap-4 w-full max-w-xs px-6">
           {nav.map((n) => (
@@ -86,6 +93,7 @@ const Links = ({ nav, session }) => {
           )}
         </div>
       </div>
+      )}
     </div>
   );
 };

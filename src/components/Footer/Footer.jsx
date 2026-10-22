@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, Heart } from 'lucide-react'
 
 const Footer = () => {
   return (

@@ -21,7 +21,7 @@ export default async function Home() {
             <div className="absolute z-10 bottom-12 -left-2 w-4 h-4 bg-purple-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
             
             <div className="w-full h-full relative rounded-full overflow-hidden border-4 border-slate-900/50">
-               <Image fill src={'/landing.jpeg'} alt="Aman Image" className="object-cover transition-transform duration-700 group-hover:scale-110"/>
+               <Image fill src={'/landing.jpeg'} alt="Aman Image" sizes="(max-width: 640px) 224px, 320px" className="object-cover transition-transform duration-700 group-hover:scale-110" preload/>
             </div>
           </div>
         </div>

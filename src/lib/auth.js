@@ -7,7 +7,7 @@ import {authConfig} from './auth.config'
 
 const login = async(credentials)=>{
   try{
-    connectToDb()
+    await connectToDb()
     const user= await User.findOne({email:credentials.email})
     if(!user){
       throw new Error('No user found with that email, please register first.')
@@ -16,7 +16,15 @@ const login = async(credentials)=>{
     if(!isPasswordCorrect){
       throw new Error('Password is incorrect, please try again.')
     }
-    return user;
+
+    // Return the fields NextAuth needs instead of the full Mongoose document
+    // (which also contains the password hash).
+    return {
+      id: user._id.toString(),
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    };
 }
 catch(e){
   throw e;

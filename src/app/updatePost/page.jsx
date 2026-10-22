@@ -1,11 +1,18 @@
 import { updatePost } from '@/database/action'
 import { getPost } from '@/database/data'
 import { auth } from '@/lib/auth'
+import { notFound } from 'next/navigation'
+
+export const dynamic = "force-dynamic";
 
 const UpdatePostPage = async ({ searchParams }) => {
-  const session = await auth()
-  const { id } = searchParams
-  const post = await getPost(id)
+  const { id } = await searchParams
+  const [session, post] = await Promise.all([auth(), getPost(id)])
+
+  if (!post) {
+    notFound()
+  }
+
   const author = session?.user?.name
 
   return (

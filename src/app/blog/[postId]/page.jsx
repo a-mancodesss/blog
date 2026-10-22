@@ -1,17 +1,23 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { deletePost } from '@/database/action';
-import {getPost} from '@/database/data'
+import { getPost } from '@/database/data'
 import { auth } from '@/lib/auth';
 import { Pencil, Trash, Calendar, User, ChevronLeft } from 'lucide-react';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
+export const dynamic = "force-dynamic";
+
 export const SinglePostPage = async({params}) => {
-const {postId}= params
+const { postId } = await params
 
+const [post, session] = await Promise.all([getPost(postId), auth()]);
 
-const post = await getPost(postId, { cache: 'no-store' });  
-const session = await auth()
+if (!post) {
+  notFound();
+}
+
   return (
     <div className='min-h-screen py-10 px-4 sm:px-6 relative'>
       {/* Background ambient light */}
@@ -74,8 +80,9 @@ const session = await auth()
               src={post.imgUrl || "https://dummyimage.com/1200x600/1e293b/475569"} 
               alt={post.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 896px"
               className="object-cover"
-              priority
+              preload
             />
           </div>
 

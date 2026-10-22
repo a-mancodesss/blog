@@ -10,15 +10,15 @@ A fullstack blog platform built with Next.js, featuring server-side rendering, s
 ## Tech Stack
 
 ### Backend
-- **Next.js 14** - App Router with Server Actions & API Routes
+- **Next.js 16** - App Router with Server Actions & API Routes
 - **MongoDB + Mongoose** - Database & ODM
 - **NextAuth v5** - Authentication (Credentials provider)
 - **bcrypt.js** - Password hashing
 - **Firebase Storage** - Image uploads
 
 ### Frontend
-- **React 18** - UI components
-- **Tailwind CSS** - Styling with glassmorphism theme
+- **React 19** - UI components
+- **Tailwind CSS 3** - Styling with glassmorphism theme
 - **Zustand** - State management
 - **React Hook Form + Zod** - Form validation
 
