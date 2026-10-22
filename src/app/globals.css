@@ -13,6 +13,7 @@
 
   body {
     @apply bg-paper text-ink antialiased;
+    isolation: isolate;
     /* Freckles white background: crisp white paper with delicate organic freckles */
     background-color: #fafafa;
     background-image:
@@ -20,6 +21,20 @@
       radial-gradient(rgba(10, 10, 10, 0.04) 0.65px, transparent 0.65px);
     background-position: 0 0, 12px 14px;
     background-size: 24px 24px, 32px 32px;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(10, 10, 10, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 10, 10, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 78%);
+    mask-image: radial-gradient(ellipse at center, #000 0%, transparent 78%);
   }
 
   ::selection {

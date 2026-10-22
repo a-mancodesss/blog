@@ -16,7 +16,7 @@ const BlogPosts = async() => {
   return (
     <div className='min-h-screen py-10 relative'>
       <div className="text-center mb-16 space-y-4">
-        <h1 className="font-display text-4xl md:text-5xl font-semibold text-ink tracking-tight">Latest <span className="text-accent">Stories</span></h1>
+        <h1 className="text-4xl md:text-5xl font-semibold text-ink tracking-tight">Latest <span className="text-accent">Stories</span></h1>
         <p className="text-ink text-lg max-w-2xl mx-auto">Explore our collection of thoughts, tutorials, and insights.</p>
       </div>
 

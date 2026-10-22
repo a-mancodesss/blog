@@ -7,6 +7,7 @@ const nextConfig = {
   },
   outputFileTracingRoot: process.cwd(),
   images: {
+    qualities: [75, 90, 100],
     remotePatterns: [
       {
         protocol: "https",

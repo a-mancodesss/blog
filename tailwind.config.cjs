@@ -29,9 +29,7 @@ module.exports = {
           soft: "#FFF7ED",
         },
       },
-      fontFamily: {
-        display: ["ui-serif", "Georgia", "Cambria", "Times New Roman", "serif"],
-      },
+
       keyframes: {
         move: {
           "0%": { transform: "translateX(-200px)" },

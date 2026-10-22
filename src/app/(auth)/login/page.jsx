@@ -20,7 +20,7 @@ const LoginPage = () => {
     <div className='flex justify-center items-center py-10 min-h-[calc(100vh-200px)] relative overflow-hidden'>
       <Toaster/>
       <div className="w-full max-w-md bg-surface p-8 rounded-xl shadow-sm border border-line relative z-10">
-        <h1 className="font-display text-3xl font-semibold mb-2 text-center text-ink">Welcome Back</h1>
+        <h1 className="text-3xl font-semibold mb-2 text-center text-ink">Welcome Back</h1>
         <p className="text-ink text-center mb-8 text-sm">Please enter your details to sign in.</p>
         
         <form action={onSubmit} className="flex flex-col gap-5">

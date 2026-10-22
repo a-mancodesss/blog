@@ -19,7 +19,7 @@ const RegisterForm = () => {
     <div className='flex justify-center items-center py-10 min-h-[calc(100vh-200px)] relative overflow-hidden'>
       <Toaster/>
       <div className="w-full max-w-md bg-surface p-8 rounded-xl shadow-sm border border-line relative z-10">
-        <h1 className="font-display text-3xl font-semibold mb-2 text-center text-ink">Create Account</h1>
+        <h1 className="text-3xl font-semibold mb-2 text-center text-ink">Create Account</h1>
         <p className="text-ink text-center mb-8 text-sm">Join our community today.</p>
         
         <form className="flex flex-col gap-5" action={onSubmit}>

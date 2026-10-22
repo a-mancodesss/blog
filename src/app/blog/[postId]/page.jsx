@@ -30,7 +30,7 @@ if (!post) {
           
           {/* Header Section */}
           <div className="space-y-6 text-center sm:text-left">
-            <h1 className="font-display text-3xl sm:text-5xl font-semibold text-ink leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-semibold text-ink leading-tight">
               {post.title}
             </h1>
             
@@ -84,7 +84,7 @@ if (!post) {
           </div>
 
           {/* Content Section */}
-          <div className="prose prose-stone prose-lg max-w-none text-ink leading-relaxed font-normal text-lg prose-headings:font-display prose-headings:text-ink prose-p:text-ink prose-a:text-accent hover:prose-a:text-accent-hover prose-strong:text-ink prose-code:text-accent prose-blockquote:border-accent prose-blockquote:text-ink">
+          <div className="prose prose-stone prose-lg max-w-none text-ink leading-relaxed font-normal text-lg prose-headings:text-ink prose-p:text-ink prose-a:text-accent hover:prose-a:text-accent-hover prose-strong:text-ink prose-code:text-accent prose-blockquote:border-accent prose-blockquote:text-ink">
             <ReactMarkdown>
               {post.description}
             </ReactMarkdown>

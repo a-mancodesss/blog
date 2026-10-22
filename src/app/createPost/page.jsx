@@ -8,7 +8,7 @@ const CreatePostPage = async () => {
   return (
     <div className="flex justify-center items-center py-10 min-h-[calc(100vh-200px)] relative overflow-hidden">
       <div className="w-full max-w-2xl bg-surface p-8 rounded-xl shadow-sm border border-line relative z-10">
-        <h1 className="font-display text-3xl font-semibold mb-8 text-center text-ink">Create a New Post</h1>
+        <h1 className="text-3xl font-semibold mb-8 text-center text-ink">Create a New Post</h1>
         <form action={addPost} className="flex flex-col gap-6">
           
           <div className="flex flex-col gap-2">
