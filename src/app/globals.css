@@ -2,3 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    background-color: #fafafa;
+  }
+
+  body {
+    @apply bg-paper text-ink antialiased;
+    /* Freckles white background: crisp white paper with delicate organic freckles */
+    background-color: #fafafa;
+    background-image:
+      radial-gradient(rgba(10, 10, 10, 0.06) 0.65px, transparent 0.65px),
+      radial-gradient(rgba(10, 10, 10, 0.04) 0.65px, transparent 0.65px);
+    background-position: 0 0, 12px 14px;
+    background-size: 24px 24px, 32px 32px;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-ink;
+  }
+}

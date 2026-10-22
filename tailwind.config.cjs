@@ -17,16 +17,37 @@ module.exports = {
       },
     },
     extend: {
-      animation: {
-        move: "move 5s linear infinite",
+      colors: {
+        paper: "#FAFAFA",
+        surface: "#FFFFFF",
+        ink: "#0A0A0A",
+        muted: "#52525B",
+        line: "#E4E4E7",
+        accent: {
+          DEFAULT: "#EA580C",
+          hover: "#C2410C",
+          soft: "#FFF7ED",
+        },
+      },
+      fontFamily: {
+        display: ["ui-serif", "Georgia", "Cambria", "Times New Roman", "serif"],
       },
       keyframes: {
         move: {
           "0%": { transform: "translateX(-200px)" },
           "100%": { transform: "translateX(200px)" },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
+        move: "move 5s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
